@@ -1,0 +1,1352 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     52996,       1344]
+NotebookOptionsPosition[     46154,       1200]
+NotebookOutlinePosition[     46726,       1219]
+CellTagsIndexPosition[     46683,       1216]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Epidemiological modeling", "GuideTitle",
+ CellID->1819024875,ExpressionUUID->"7b8f0fb2-fda7-4fb4-8d93-d5bf5b1d54a2"],
+
+Cell[TextData[{
+ "The paclet provides functions for model creation, modification, simulation, \
+and visualization of simulation results. The main paradigm is ",
+ ButtonBox["Compartmental epidemiological modeling",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology"],
+     None},
+  ButtonNote->
+   "https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology"],
+ ", or, if preferred, ",
+ ButtonBox["System dynamics",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://en.wikipedia.org/wiki/System_dynamics"], None},
+  ButtonNote->"https://en.wikipedia.org/wiki/System_dynamics"],
+ ". "
+}], "GuideAbstract",
+ CellChangeTimes->{{3.899478272430468*^9, 3.899478445028882*^9}},
+ CellID->773875433,ExpressionUUID->"37b65175-4cba-4613-b7b9-656ae5c998de"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "GuideFunctionsSection",
+ CellID->1363436199,ExpressionUUID->"2a9df877-fa5f-440a-a757-f1e68d734ee6"],
+
+Cell[CellGroupData[{
+
+Cell["Models", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.899477963950014*^9, 3.899477974671154*^9}, {
+  3.8994782606050787`*^9, 3.899478262100341*^9}},
+ CellID->323332267,ExpressionUUID->"0b56a6e0-911e-4a59-881a-645bef2ebabf"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["MalariaModel",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/MalariaModel"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},ExpressionUUID->
+  "9d0c7c6c-cd43-41cc-9fdc-f0050e4bd34a"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["SIRModel",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AntonAntonov/EpidemiologicalModeling/ref/SIRModel"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"52ba9a90-4b1a-4bd1-9027-490af12b3b22",ExpressionUUID->
+  "03877ef1-915d-4f1b-8298-7db5898f743c"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["SI2RModel",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AntonAntonov/EpidemiologicalModeling/ref/SI2RModel"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"e97e75b4-5247-48ed-b052-8435c97b60fb",ExpressionUUID->
+  "66c838fb-6e61-4c09-8ae9-d40ad72e29e2"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["SEIRModel",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AntonAntonov/EpidemiologicalModeling/ref/SEIRModel"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"d1dc0444-4a69-437d-9ac9-e7978e8bf8d8",ExpressionUUID->
+  "31768c1c-f5a2-45b6-94f2-2fa87a214a85"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["SEI2RModel",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AntonAntonov/EpidemiologicalModeling/ref/SEI2RModel"]],
+   "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"737945a6-591c-4b75-b7a9-2bbc1b5874d4",ExpressionUUID->
+  "37f5932c-d073-478f-8b6b-eb8b7e04efc8"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["SEI2HRModel",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/SEI2HRModel"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"4ec178a6-fdbc-47e5-a3d1-dd1c97471d5a",ExpressionUUID->
+  "0d6121fd-c33c-4420-af09-65ff745a14c0"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["SEI2HREconModel",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/SEI2HREconModel"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"159afff2-c611-47f8-8e21-0909a6102224",ExpressionUUID->
+  "6090d92d-7b2c-41b0-a6a3-871b82fced83"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["SEI4RModel",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AntonAntonov/EpidemiologicalModeling/ref/SEI4RModel"]],
+   "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"db345cf5-ffe6-471d-8485-97be7ba3dadc",ExpressionUUID->
+  "f1c9ce7c-2942-4ece-b453-b894fda6e7a4"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "859ecfe5-e4e3-4693-b8b3-e34e92446d6b"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "d6c84c6c-97f6-4670-8e0b-fc8dbfe2e138", 
+     "9a280ad1-ed82-4a2c-bb60-84019c690015"], $CellContext`cellobj$$ = 
+    CellObject[
+    "55dab367-2741-4eed-ba39-39128d603a8b", 
+     "fe7d6eaa-2a44-43c2-9e8f-d0480599341c"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "55dab367-2741-4eed-ba39-39128d603a8b"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.8994784529772673`*^9, 3.899478519974906*^9}, {
+  3.899479476836589*^9, 3.8994795066016293`*^9}},
+ CellID->1160835718,ExpressionUUID->"35755ad3-1510-4115-b03e-6c3fe0b0ec39"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\t", "GuideDelimiter",
+ CellID->1815370726,ExpressionUUID->"bae9c4c8-a19b-4784-a2ce-f961fa919580"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["EpidemiologyModelQ",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/EpidemiologyModelQ"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "33c9ae90-8470-4098-bb1b-4169e0cdbce2"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["EpidemiologyFullModelQ",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/EpidemiologyFullModelQ"]]\
+, "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"8818cee3-a521-499e-9367-16dd257208c0",ExpressionUUID->
+  "58e28bcd-5236-4c5b-abb0-7b4a2eac4c8c"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "61cccf23-e6a6-4e4e-a885-9b40cf47a860"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "d6c84c6c-97f6-4670-8e0b-fc8dbfe2e138", 
+     "9a280ad1-ed82-4a2c-bb60-84019c690015"], $CellContext`cellobj$$ = 
+    CellObject[
+    "5a89699f-e0e0-4402-ae17-59bd73e7f5b1", 
+     "511402c6-b403-498c-84b3-9d628aff1d5d"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "5a89699f-e0e0-4402-ae17-59bd73e7f5b1"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.8994785300021772`*^9, 3.899478536750482*^9}, {
+  3.8995608199028263`*^9, 3.8995608248140097`*^9}},
+ CellID->1153541275,ExpressionUUID->"4837bfdb-ccc0-4427-b2c7-4290aa93475c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\t", "GuideDelimiter",
+ CellID->1635618953,ExpressionUUID->"76f386d8-5215-43e6-b209-4d418259cd8a"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["ModelGridTableForm",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/ModelGridTableForm"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "5de0590c-3e09-4455-a4b9-fec466941bb1"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "004c30eb-910e-4b32-932e-8c87a13f53f1"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "d6c84c6c-97f6-4670-8e0b-fc8dbfe2e138", 
+     "9a280ad1-ed82-4a2c-bb60-84019c690015"], $CellContext`cellobj$$ = 
+    CellObject[
+    "894dfdd3-976f-4f4e-9510-dca85e858e71", 
+     "4357dbdc-46a3-4873-88d5-47796d4f3034"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "894dfdd3-976f-4f4e-9510-dca85e858e71"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.899478545074911*^9, 3.899478545074938*^9}, {
+  3.899560829570856*^9, 3.8995608295708714`*^9}},
+ CellID->85843809,ExpressionUUID->"9d97e192-8544-4959-8f6b-787d1fab5e4c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Model modifications", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.89947800219099*^9, 3.899478006002146*^9}},
+ CellID->1458700058,ExpressionUUID->"fb41dfee-b23e-4d3d-a88e-23083a4c7554"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["AddModelIdentifier",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/AddModelIdentifier"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "47a29ec7-6b15-420c-bd98-50950c174ee7"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JoinModels",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AntonAntonov/EpidemiologicalModeling/ref/JoinModels"]],
+   "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"3dd6584d-7ea2-4ecb-8310-80ed21315e27",ExpressionUUID->
+  "9e2735db-2129-450c-bc44-6230507e8f86"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["MakeCoreMultiSiteModel",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/MakeCoreMultiSiteModel"]]\
+, "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"0753c0a2-859d-434d-8220-840577191322",ExpressionUUID->
+  "5f9ba3ea-3271-44b5-81ed-f8fc80a6d1f7"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["AddTermsToEquations",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/AddTermsToEquations"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"cc31c89a-db40-4447-ba8d-88af5f389d91",ExpressionUUID->
+  "f3edd1b3-9617-46d3-8a3e-852024631b2b"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["MakeMigrationTerms",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/MakeMigrationTerms"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"61a11201-5051-471b-b32c-02c490b00e0f",ExpressionUUID->
+  "4b6cf92e-4a96-4835-ba76-b484adac394f"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["MakeAgeGroupMortalityTerms",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/\
+MakeAgeGroupMortalityTerms"]], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"5052308c-5073-4ce2-a370-9a44c972fe67",ExpressionUUID->
+  "d0579c52-99de-48ed-9f9c-43f1bf66ce7d"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["MakeAgeGroupMixingTerms",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/MakeAgeGroupMixingTerms"]\
+], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"0694a5d9-9e81-48b9-82ef-e160ebd89371",ExpressionUUID->
+  "6eb3107d-f505-4f76-b03a-9f75657c5908"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["ToSiteCompartmentsModel",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/ToSiteCompartmentsModel"]\
+], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"c3078d5b-da24-4573-ac07-081f2df43325",ExpressionUUID->
+  "f4d92652-af83-4339-9042-e7a476a3bcd3"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "8c14c9b1-3962-49ce-86a8-7c4ad652cffc"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "d6c84c6c-97f6-4670-8e0b-fc8dbfe2e138", 
+     "9a280ad1-ed82-4a2c-bb60-84019c690015"], $CellContext`cellobj$$ = 
+    CellObject[
+    "1490557f-059e-4e5d-9b64-25d0240abd33", 
+     "d14a7603-d94a-43c7-8329-c3ec68e8a77f"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "1490557f-059e-4e5d-9b64-25d0240abd33"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.899478609370798*^9, 3.8994786121666307`*^9}, {
+  3.899478648217824*^9, 3.899478728558421*^9}, {3.899478805188146*^9, 
+  3.89947880693644*^9}, {3.8995608351039143`*^9, 3.89956086385678*^9}},
+ CellID->2057061471,ExpressionUUID->"7aeece36-9f1a-40dd-b57c-d1e12add4c2a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\t", "GuideDelimiter",
+ CellID->692910044,ExpressionUUID->"0439f3e4-12da-47fa-adc3-c29c1afb35c6"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["EquationPosition",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/EquationPosition"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "b7ddc925-199b-493e-a776-e86c7acb57f5"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["GetStocks",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AntonAntonov/EpidemiologicalModeling/ref/GetStocks"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"1c34d2d8-110b-4cbd-b033-637df148b87b",ExpressionUUID->
+  "d181ac19-3884-4564-bab1-4d75a1efce81"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["GetStockSymbols",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/GetStockSymbols"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"9bd2a055-2775-4ff9-96d8-ad2aa94f1739",ExpressionUUID->
+  "b520baa6-e9cf-48af-9cfc-aee2e3d7c70d"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["GetPopulations",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/GetPopulations"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"6f5fef6a-6205-4e7a-98e4-9ba44a58a3d4",ExpressionUUID->
+  "c92532ae-00d8-4b57-9b38-e255a18b5722"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["GetPopulationSymbols",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/GetPopulationSymbols"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"1bec72a8-47a8-4c22-a661-2bfef169e536",ExpressionUUID->
+  "de2f997c-ffad-439d-a177-9e701c278642"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["GetRates",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AntonAntonov/EpidemiologicalModeling/ref/GetRates"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"d1bd4ec4-8c5c-460e-a189-2887e0d1459f",ExpressionUUID->
+  "ed5e7087-6615-4c46-a4c3-4fc528d63a54"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["GetRateSymbols",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/GetRateSymbols"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"3952a45b-3c4a-48a8-bfd8-4a780a42cc3d",ExpressionUUID->
+  "c7ef2e5c-3fc0-486d-861e-15cb10fbf022"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "8ebca686-a376-4538-b358-320509c85832"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "d6c84c6c-97f6-4670-8e0b-fc8dbfe2e138", 
+     "9a280ad1-ed82-4a2c-bb60-84019c690015"], $CellContext`cellobj$$ = 
+    CellObject[
+    "96bec9c3-b9b6-45d1-b659-b26f77ac69cb", 
+     "b788a597-f79e-43cb-84f9-680c492b8fe5"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "96bec9c3-b9b6-45d1-b659-b26f77ac69cb"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.8994787013038483`*^9, 3.899478702360806*^9}, {
+  3.899478734143265*^9, 3.899478768091501*^9}, {3.899560868783448*^9, 
+  3.899560891628675*^9}},
+ CellID->2082775474,ExpressionUUID->"eb150108-9f67-4421-aa13-6c16b79e4187"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\t", "GuideDelimiter",
+ CellID->1223945418,ExpressionUUID->"e62e4bc9-be62-419a-88c4-bef17d512335"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["AssignInitialConditions",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/AssignInitialConditions"]\
+], "InlineGuideFunction",ExpressionUUID->
+  "d78bbdb6-a93e-4e31-b4a0-00e87e0d0e61"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["SetInitialConditions",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/SetInitialConditions"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"0c35716b-897b-4a7e-be8b-84e61eb5a382",ExpressionUUID->
+  "f3da2740-ff0a-4bfc-b3c0-9261f865a4db"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["AssignRateRules",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/AssignRateRules"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"628f7b30-15eb-444a-a965-c1bb965769f3",ExpressionUUID->
+  "1409e70d-d1b4-4ebe-8a25-7f9b0d1fdb81"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["SetRateRules",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/SetRateRules"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"5410ca09-b28c-4b5c-bfc0-1cab0feda5c9",ExpressionUUID->
+  "ae0565be-76d6-49c5-b24c-954e16b1d376"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "595c413d-441b-4a4a-8c39-9fd2422aea85"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "d6c84c6c-97f6-4670-8e0b-fc8dbfe2e138", 
+     "9a280ad1-ed82-4a2c-bb60-84019c690015"], $CellContext`cellobj$$ = 
+    CellObject[
+    "bd1b5482-53d0-468b-a8f0-12db60a4712f", 
+     "f72d1e7e-3779-4756-9b46-25e455609277"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "bd1b5482-53d0-468b-a8f0-12db60a4712f"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.899478818860834*^9, 3.899478842689941*^9}, {
+  3.8995608964144583`*^9, 3.899560907883759*^9}},
+ CellID->104785713,ExpressionUUID->"4c535128-7e84-4447-bdec-5be2e26bfafd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\t", "GuideDelimiter",
+ CellID->196887851,ExpressionUUID->"6d529f3e-4fe2-4167-86a1-959a28538231"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["ToAssociation",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/ToAssociation"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "7db5b8cc-9c0c-4af2-93c5-6be8e5d6a593"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["CoerceAnnotatedSymbols",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/CoerceAnnotatedSymbols"]]\
+, "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"3028c1e7-09be-485c-af79-0c3925d123af",ExpressionUUID->
+  "8dfefb80-0115-40db-a929-97ade30aa5fc"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "aab28166-4101-4e5d-8497-6d3a71240658"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "d6c84c6c-97f6-4670-8e0b-fc8dbfe2e138", 
+     "9a280ad1-ed82-4a2c-bb60-84019c690015"], $CellContext`cellobj$$ = 
+    CellObject[
+    "c9ef761c-bde3-4396-8c4b-e3435db2cb3b", 
+     "9a7a3316-6c81-4e44-af90-59bdff1b69a9"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "c9ef761c-bde3-4396-8c4b-e3435db2cb3b"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.8994788649375877`*^9, 3.899478872177669*^9}, {
+  3.8995609134128447`*^9, 3.899560917211278*^9}},
+ CellID->1969295377,ExpressionUUID->"182bf3c7-9bcd-4a32-88e9-41c45399ccac"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Simulations functions", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.8994782403989887`*^9, 3.899478244508382*^9}},
+ CellID->2075519933,ExpressionUUID->"388be8bd-5050-4344-829b-2e3ebc99bcb0"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["ModelNDSolveEquations",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/ModelNDSolveEquations"]],
+   "InlineGuideFunction",ExpressionUUID->
+  "dc993177-764d-4f85-a7a9-e3e767ebc39d"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["ModelNDSolve",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/ModelNDSolve"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"181b203a-52c7-477d-ac48-13fec239cd16",ExpressionUUID->
+  "fe84abd9-8c23-40ce-96c3-ab497c411c0d"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["MakePolygonGrid",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/MakePolygonGrid"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"41663d84-7e11-457e-8336-b4903a11a2fe",ExpressionUUID->
+  "aa6bae99-e8ee-4901-8916-4b33cf40dff7"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["MakeHexagonGrid",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/MakeHexagonGrid"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"2195177e-dbc3-41ea-ac2e-0f111e5bbafd",ExpressionUUID->
+  "16be77ed-00a6-4510-80ff-9d15991c640c"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["ToGraph",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AntonAntonov/EpidemiologicalModeling/ref/ToGraph"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"266eb915-f590-434f-815a-5988fa4e67c0",ExpressionUUID->
+  "144a398b-a7a9-464d-8731-66beeb974ecf"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["AggregateForCellIDs",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/AggregateForCellIDs"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"7d582024-9ed7-4f5b-b1d9-2db63e1f51bd",ExpressionUUID->
+  "14f5cf7e-292b-4baa-8c88-6745ac3ede58"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["GridObjectQ",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/GridObjectQ"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"14c9022e-9010-45f4-8704-e9c251a4d9da",ExpressionUUID->
+  "7f341e60-ac68-447b-b61c-f11dff0f79df"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["ApproximateField",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/ApproximateField"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"0b231be7-b622-41ca-a522-d4b5baff9ddb",ExpressionUUID->
+  "e21b888e-cb24-4a95-946b-6ae53cd1b347"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "3eab88b5-ab2d-4899-9ee7-1a0b91e9396c"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "d6c84c6c-97f6-4670-8e0b-fc8dbfe2e138", 
+     "9a280ad1-ed82-4a2c-bb60-84019c690015"], $CellContext`cellobj$$ = 
+    CellObject[
+    "bf7518a8-e877-4116-b509-aa8c0dbb36a7", 
+     "2ecfd16d-cbd3-44b8-8d06-0e4ff57abb34"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "bf7518a8-e877-4116-b509-aa8c0dbb36a7"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.899478889649151*^9, 3.899478951839757*^9}, {
+  3.899560920773191*^9, 3.89956094793579*^9}},
+ CellID->929433675,ExpressionUUID->"978b429c-1e6d-4bda-b2e8-45b8d380a1be"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Visualization functions", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.8994782496148653`*^9, 3.8994782569506493`*^9}},
+ CellID->1940212306,ExpressionUUID->"36aa5f93-5282-4c0f-b5da-a47cb05365a3"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["EvaluateSolutionsByModelIDs",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/\
+EvaluateSolutionsByModelIDs"]], "InlineGuideFunction",ExpressionUUID->
+  "22aab43d-8956-4e5e-b175-a694b2bf2fb6"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["EvaluateSolutionsOverGraphVertexes",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/\
+EvaluateSolutionsOverGraphVertexes"]], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"3f2e84b5-a30d-4957-b44d-af269d799c3e",ExpressionUUID->
+  "686da41b-e7b1-4498-acea-350cb5619672"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["EvaluateSolutionsOverGraph",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/\
+EvaluateSolutionsOverGraph"]], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"a1fb6f33-1520-402a-a933-1fd8508a5ceb",ExpressionUUID->
+  "8732f2ce-04b1-443a-873c-6317564802b0"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "ad9821d0-d04e-46ef-8352-df416cb7f54e"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "d6c84c6c-97f6-4670-8e0b-fc8dbfe2e138", 
+     "9a280ad1-ed82-4a2c-bb60-84019c690015"], $CellContext`cellobj$$ = 
+    CellObject[
+    "ef79c7db-117a-482d-b4c3-cf699c2618bf", 
+     "591a4aad-a5f7-4fb1-b0c6-ff550dfbf40c"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "ef79c7db-117a-482d-b4c3-cf699c2618bf"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.8994790328747673`*^9, 3.899479107577291*^9}, {
+  3.899479236192*^9, 3.899479237628429*^9}, {3.899560952415709*^9, 
+  3.899560959405641*^9}},
+ CellID->195727447,ExpressionUUID->"8ee86f89-8781-49bc-96c1-7fdca220dc02"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\t", "GuideDelimiter",
+ CellID->1298364367,ExpressionUUID->"633e1165-8362-4d23-9c2b-ed4ef73e64e5"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["MakeVertexShapeFunction",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/MakeVertexShapeFunction"]\
+], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"0e9a0cd8-ef25-4758-a0dc-89a19c331396",ExpressionUUID->
+  "83988fbc-cd61-4dce-901a-df64345df69c"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["ConvertSolutions",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/ConvertSolutions"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"89c14824-5471-43e6-9f36-64ac3ab1b3af",ExpressionUUID->
+  "abdc81e6-fd86-4749-94cf-ad55afe2f6e4"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "d389a295-d8db-4d2d-86b3-0281ebdd7256"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "d6c84c6c-97f6-4670-8e0b-fc8dbfe2e138", 
+     "9a280ad1-ed82-4a2c-bb60-84019c690015"], $CellContext`cellobj$$ = 
+    CellObject[
+    "b83abe78-dfbb-4dca-9647-da35d4d1608e", 
+     "9b47dc2f-0b69-408b-890a-6953d6fbc7f5"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "b83abe78-dfbb-4dca-9647-da35d4d1608e"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.8994790328747673`*^9, 3.899479107577291*^9}, {
+  3.899479155411182*^9, 3.8994791844828*^9}, {3.8995609626246443`*^9, 
+  3.899560965909587*^9}},
+ CellID->1793738172,ExpressionUUID->"0b253c18-79e6-42eb-bac8-f4905a06ecaa"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\t", "GuideDelimiter",
+ CellID->1028579002,ExpressionUUID->"22b11d2c-9e13-476a-a0d6-374f3db31164"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["MultiSiteModelStocksPlot",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/\
+MultiSiteModelStocksPlot"]], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"67f86a70-42da-4598-8235-48435c16e48f",ExpressionUUID->
+  "330969a0-6cff-4a83-a02f-898418cdccae"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["PopulationStockPlots",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/PopulationStockPlots"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"10ec496b-c6f2-42d2-b1fe-5978e0331a4d",ExpressionUUID->
+  "194df3f7-56b3-4fe9-a7d2-2da5d69d39c2"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["EconomicsStockPlots",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/EconomicsStockPlots"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"76fa4ed6-168d-4d80-af8a-93fbc2ae0d1b",ExpressionUUID->
+  "730673bd-9a76-4bbc-aa65-3d81b7bd2bc2"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["SiteIndexSolutionsPlot",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/SiteIndexSolutionsPlot"]]\
+, "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"62fa1a69-9182-4dc9-93ea-9486fe35a20d",ExpressionUUID->
+  "e7959234-55df-49c8-9d2e-1825e191a532"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["PrefixGroupsSolutionsListPlot",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/\
+PrefixGroupsSolutionsListPlot"]], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"a3461b37-6410-4706-aede-0c58edd29970",ExpressionUUID->
+  "55c45bed-d085-4a2d-9cf8-7dab25eeb147"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "28d6289c-aac1-4c94-9779-5665ba5fc5e6"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "d6c84c6c-97f6-4670-8e0b-fc8dbfe2e138", 
+     "9a280ad1-ed82-4a2c-bb60-84019c690015"], $CellContext`cellobj$$ = 
+    CellObject[
+    "cfad56d6-cb9c-4f5d-9c78-171a5dd94b03", 
+     "03c9673e-4469-400f-8ba4-cbe47c31bf8c"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "cfad56d6-cb9c-4f5d-9c78-171a5dd94b03"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.8994790328747673`*^9, 3.899479107577291*^9}, {
+  3.8994791973885107`*^9, 3.899479211933344*^9}, {3.899560975902169*^9, 
+  3.899560991789317*^9}},
+ CellID->538120081,ExpressionUUID->"a9801964-54b8-4c17-879d-c0fb6f6c9f94"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\t", "GuideDelimiter",
+ CellID->83928264,ExpressionUUID->"60566e54-fdcf-40d9-bd6c-8dc56bfbc54c"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["ToTimeSeries",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/ToTimeSeries"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"ac4bd19c-1479-4a41-ad9d-e2db22d99b85",ExpressionUUID->
+  "cb52751a-fbc1-46ea-aeef-bdb4b6a071c2"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["ToPrefixGroupsSolutions",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/EpidemiologicalModeling/ref/ToPrefixGroupsSolutions"]\
+], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"4da8abaf-19c2-4fb6-9880-aa7c3e0a495f",ExpressionUUID->
+  "9ca35fa0-60ec-4bd5-91b1-20c538e58d00"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "b91e7e54-04bc-49c9-922a-42167c301eac"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "d6c84c6c-97f6-4670-8e0b-fc8dbfe2e138", 
+     "9a280ad1-ed82-4a2c-bb60-84019c690015"], $CellContext`cellobj$$ = 
+    CellObject[
+    "44f645b8-f1c4-47b1-aea2-39001b0a6d7e", 
+     "ea26b74c-b9c0-4330-9a84-3b06c756f27c"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "44f645b8-f1c4-47b1-aea2-39001b0a6d7e"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.8994790328747673`*^9, 3.899479107577291*^9}, {
+  3.899479221992033*^9, 3.8994792294585457`*^9}, {3.899560995168973*^9, 
+  3.89956099910912*^9}},
+ CellID->177309287,ExpressionUUID->"9fbad940-c358-484e-8576-420997a98d00"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tech Notes", "GuideTutorialsSection",
+ CellID->276979431,ExpressionUUID->"bd43baf7-08a8-47be-b2b9-69c5c6c1265f"],
+
+Cell[TextData[ButtonBox["SEI2HR model with quarantine scenarios",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:AntonAntonov/EpidemiologicalModeling/tutorial/\
+SEI2HRmodelwithquarantinescenarios"]], "GuideTutorial",
+ CellChangeTimes->{{3.8995610332357817`*^9, 3.899561051713217*^9}},
+ CellID->1596233768,ExpressionUUID->"f2c951d2-b8c5-408e-9612-45105bf596ec"],
+
+Cell[TextData[ButtonBox["SEI2HR-Econ model with quarantine and supplies \
+scenarios",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:AntonAntonov/EpidemiologicalModeling/tutorial/SEI2HR-\
+Econmodelwithquarantineandsuppliesscenarios"]], "GuideTutorial",
+ CellChangeTimes->{{3.899562391513015*^9, 3.8995623960134907`*^9}},
+ CellID->1535220452,ExpressionUUID->"f70fbae1-8356-4794-8667-d2ac9ebb7009"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "GuideMoreAboutSection",
+ CellChangeTimes->{{3.8430423939366693`*^9, 3.843042395176153*^9}},
+ CellID->434118059,ExpressionUUID->"6c3a661c-ee13-4656-ba5c-b4a7fbabd6d8"],
+
+Cell["XXXX", "GuideMoreAbout",
+ CellID->1220268754,ExpressionUUID->"047182b4-17f4-485a-a2b7-7504a1bb56c7"],
+
+Cell["XXXX", "GuideMoreAbout",
+ CellID->588119628,ExpressionUUID->"1f39f5ca-da31-4386-96fa-ef49ddbb6238"]
+}, Open  ]],
+
+Cell["Related Links", "GuideRelatedLinksSection",
+ CellID->1806844302,ExpressionUUID->"0a6d214b-ec8d-40bd-8b43-300b2476b656"],
+
+Cell[CellGroupData[{
+
+Cell["Metadata", "MetadataSection",
+ CellID->65931487,ExpressionUUID->"97bbb2ad-544a-4ea5-bfcd-95be6904bd60"],
+
+Cell[TextData[{
+ "New in: ",
+ Cell["1.0.0", "HistoryData",
+  CellTags->"New",ExpressionUUID->"1a31363b-0b58-4db4-b68a-e9094b5868e8"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified",ExpressionUUID->"3c14c721-a7d6-43d2-bfcd-1afca398d0c6"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete",ExpressionUUID->
+  "7abf35c9-acbf-468d-8b83-078b2b950509"]
+}], "History",
+ CellChangeTimes->{{3.89947941668557*^9, 3.899479420319721*^9}},
+ CellID->8940157,ExpressionUUID->"669bc304-231f-456f-86a1-b983e1120a98"],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->2080847056,ExpressionUUID->"0d5cb52e-6b41-4eab-be7b-682b7601a4d1"],
+
+Cell["Guide", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->1025278797,ExpressionUUID->"87025c35-0071-4db9-88dc-8c07552a9ddc"],
+
+Cell["AntonAntonov/EpidemiologicalModeling", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->451957651,ExpressionUUID->"8d31d295-27c2-401e-80c3-bdcf89496d77"],
+
+Cell["AntonAntonov`EpidemiologicalModeling`", "Categorization",
+ CellLabel->"Context",
+ CellID->402580918,ExpressionUUID->"36e43845-8426-41c1-b1a9-fb411d6b7cb1"],
+
+Cell["\<\
+AntonAntonov/EpidemiologicalModeling/guide/Epidemiologicalmodeling\
+\>", "Categorization",
+ CellLabel->"URI",
+ CellID->1604000776,ExpressionUUID->"d59c36ae-dd0a-4fff-ae96-d4fd6f754cee"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->1078821441,ExpressionUUID->"12e37ee5-5381-4354-a940-5e3c7adc76c6"],
+
+Cell["Epidemiology", "Keywords",
+ CellChangeTimes->{{3.899479424811645*^9, 3.8994794318990583`*^9}},
+ CellID->547527266,ExpressionUUID->"2e6b589b-e347-43d5-b9c3-1dafd0fc8d82"],
+
+Cell["Compartmental modeling", "Keywords",
+ CellChangeTimes->{{3.899479424811645*^9, 3.8994794386128893`*^9}},
+ CellID->1684656296,ExpressionUUID->"d0123691-272a-4c1f-81b7-f0ec5907cbc0"],
+
+Cell["System dynamics", "Keywords",
+ CellChangeTimes->{{3.899479424811645*^9, 3.89947944369457*^9}},
+ CellID->1206907547,ExpressionUUID->"19e86adb-280d-463d-8533-ae1a7e7abc04"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1411, 1281},
+WindowMargins->{{Automatic, 904}, {Automatic, 24}},
+TaggingRules-><|"Paclet" -> "AntonAntonov/EpidemiologicalModeling"|>,
+Magnification:>1.25 Inherited,
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (June 3, 2023)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "GuidePageStylesExt.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"d6c84c6c-97f6-4670-8e0b-fc8dbfe2e138"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 122, 1, 109, "GuideTitle",ExpressionUUID->"7b8f0fb2-fda7-4fb4-8d93-d5bf5b1d54a2",
+ CellID->1819024875],
+Cell[705, 25, 829, 19, 82, "GuideAbstract",ExpressionUUID->"37b65175-4cba-4613-b7b9-656ae5c998de",
+ CellID->773875433]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1571, 49, 109, 1, 91, "GuideFunctionsSection",ExpressionUUID->"2a9df877-fa5f-440a-a757-f1e68d734ee6",
+ CellID->1363436199],
+Cell[CellGroupData[{
+Cell[1705, 54, 234, 3, 46, "GuideFunctionsSubsection",ExpressionUUID->"0b56a6e0-911e-4a59-881a-645bef2ebabf",
+ CellID->323332267],
+Cell[1942, 59, 4557, 111, 61, "InlineGuideFunctionListing",ExpressionUUID->"35755ad3-1510-4115-b03e-6c3fe0b0ec39",
+ CellID->1160835718]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6536, 175, 104, 1, 35, "GuideDelimiter",ExpressionUUID->"bae9c4c8-a19b-4784-a2ce-f961fa919580",
+ CellID->1815370726],
+Cell[6643, 178, 2243, 55, 34, "InlineGuideFunctionListing",ExpressionUUID->"4837bfdb-ccc0-4427-b2c7-4290aa93475c",
+ CellID->1153541275]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8923, 238, 104, 1, 35, "GuideDelimiter",ExpressionUUID->"76f386d8-5215-43e6-b209-4d418259cd8a",
+ CellID->1635618953],
+Cell[9030, 241, 1826, 45, 34, "InlineGuideFunctionListing",ExpressionUUID->"9d97e192-8544-4959-8f6b-787d1fab5e4c",
+ CellID->85843809]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10893, 291, 196, 2, 46, "GuideFunctionsSubsection",ExpressionUUID->"fb41dfee-b23e-4d3d-a88e-23083a4c7554",
+ CellID->1458700058],
+Cell[11092, 295, 4772, 115, 112, "InlineGuideFunctionListing",ExpressionUUID->"7aeece36-9f1a-40dd-b57c-d1e12add4c2a",
+ CellID->2057061471]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15901, 415, 103, 1, 35, "GuideDelimiter",ExpressionUUID->"0439f3e4-12da-47fa-adc3-c29c1afb35c6",
+ CellID->692910044],
+Cell[16007, 418, 4231, 104, 86, "InlineGuideFunctionListing",ExpressionUUID->"eb150108-9f67-4421-aa13-6c16b79e4187",
+ CellID->2082775474]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20275, 527, 104, 1, 35, "GuideDelimiter",ExpressionUUID->"e62e4bc9-be62-419a-88c4-bef17d512335",
+ CellID->1223945418],
+Cell[20382, 530, 3034, 75, 61, "InlineGuideFunctionListing",ExpressionUUID->"4c535128-7e84-4447-bdec-5be2e26bfafd",
+ CellID->104785713]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23453, 610, 103, 1, 35, "GuideDelimiter",ExpressionUUID->"6d529f3e-4fe2-4167-86a1-959a28538231",
+ CellID->196887851],
+Cell[23559, 613, 2231, 55, 34, "InlineGuideFunctionListing",ExpressionUUID->"182bf3c7-9bcd-4a32-88e9-41c45399ccac",
+ CellID->1969295377]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25827, 673, 201, 2, 46, "GuideFunctionsSubsection",ExpressionUUID->"388be8bd-5050-4344-829b-2e3ebc99bcb0",
+ CellID->2075519933],
+Cell[26031, 677, 4591, 114, 87, "InlineGuideFunctionListing",ExpressionUUID->"978b429c-1e6d-4bda-b2e8-45b8d380a1be",
+ CellID->929433675]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30659, 796, 205, 2, 46, "GuideFunctionsSubsection",ExpressionUUID->"36aa5f93-5282-4c0f-b5da-a47cb05365a3",
+ CellID->1940212306],
+Cell[30867, 800, 2744, 66, 86, "InlineGuideFunctionListing",ExpressionUUID->"8ee86f89-8781-49bc-96c1-7fdca220dc02",
+ CellID->195727447]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33648, 871, 104, 1, 35, "GuideDelimiter",ExpressionUUID->"633e1165-8362-4d23-9c2b-ed4ef73e64e5",
+ CellID->1298364367],
+Cell[33755, 874, 2382, 58, 34, "InlineGuideFunctionListing",ExpressionUUID->"0b253c18-79e6-42eb-bac8-f4905a06ecaa",
+ CellID->1793738172]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36174, 937, 104, 1, 35, "GuideDelimiter",ExpressionUUID->"22b11d2c-9e13-476a-a0d6-374f3db31164",
+ CellID->1028579002],
+Cell[36281, 940, 3635, 88, 86, "InlineGuideFunctionListing",ExpressionUUID->"a9801964-54b8-4c17-879d-c0fb6f6c9f94",
+ CellID->538120081]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39953, 1033, 102, 1, 35, "GuideDelimiter",ExpressionUUID->"60566e54-fdcf-40d9-bd6c-8dc56bfbc54c",
+ CellID->83928264],
+Cell[40058, 1036, 2374, 58, 34, "InlineGuideFunctionListing",ExpressionUUID->"9fbad940-c358-484e-8576-420997a98d00",
+ CellID->177309287]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42481, 1100, 118, 1, 93, "GuideTutorialsSection",ExpressionUUID->"bd43baf7-08a8-47be-b2b9-69c5c6c1265f",
+ CellID->276979431],
+Cell[42602, 1103, 357, 6, 30, "GuideTutorial",ExpressionUUID->"f2c951d2-b8c5-408e-9612-45105bf596ec",
+ CellID->1596233768],
+Cell[42962, 1111, 393, 7, 30, "GuideTutorial",ExpressionUUID->"f70fbae1-8356-4794-8667-d2ac9ebb7009",
+ CellID->1535220452]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43392, 1123, 190, 2, 93, "GuideMoreAboutSection",ExpressionUUID->"6c3a661c-ee13-4656-ba5c-b4a7fbabd6d8",
+ CellID->434118059],
+Cell[43585, 1127, 106, 1, 30, "GuideMoreAbout",ExpressionUUID->"047182b4-17f4-485a-a2b7-7504a1bb56c7",
+ CellID->1220268754],
+Cell[43694, 1130, 105, 1, 30, "GuideMoreAbout",ExpressionUUID->"1f39f5ca-da31-4386-96fa-ef49ddbb6238",
+ CellID->588119628]
+}, Open  ]],
+Cell[43814, 1134, 125, 1, 93, "GuideRelatedLinksSection",ExpressionUUID->"0a6d214b-ec8d-40bd-8b43-300b2476b656",
+ CellID->1806844302],
+Cell[CellGroupData[{
+Cell[43964, 1139, 109, 1, 90, "MetadataSection",ExpressionUUID->"97bbb2ad-544a-4ea5-bfcd-95be6904bd60",
+ CellID->65931487],
+Cell[44076, 1142, 542, 13, 33, "History",ExpressionUUID->"669bc304-231f-456f-86a1-b983e1120a98",
+ CellID->8940157],
+Cell[CellGroupData[{
+Cell[44643, 1159, 123, 1, 27, "CategorizationSection",ExpressionUUID->"0d5cb52e-6b41-4eab-be7b-682b7601a4d1",
+ CellID->2080847056],
+Cell[44769, 1162, 134, 2, 87, "Categorization",ExpressionUUID->"87025c35-0071-4db9-88dc-8c07552a9ddc",
+ CellID->1025278797],
+Cell[44906, 1166, 164, 2, 87, "Categorization",ExpressionUUID->"8d31d295-27c2-401e-80c3-bdcf89496d77",
+ CellID->451957651],
+Cell[45073, 1170, 161, 2, 87, "Categorization",ExpressionUUID->"36e43845-8426-41c1-b1a9-fb411d6b7cb1",
+ CellID->402580918],
+Cell[45237, 1174, 195, 4, 87, "Categorization",ExpressionUUID->"d59c36ae-dd0a-4fff-ae96-d4fd6f754cee",
+ CellID->1604000776]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[45469, 1183, 111, 1, 26, "KeywordsSection",ExpressionUUID->"12e37ee5-5381-4354-a940-5e3c7adc76c6",
+ CellID->1078821441],
+Cell[45583, 1186, 175, 2, 27, "Keywords",ExpressionUUID->"2e6b589b-e347-43d5-b9c3-1dafd0fc8d82",
+ CellID->547527266],
+Cell[45761, 1190, 186, 2, 27, "Keywords",ExpressionUUID->"d0123691-272a-4c1f-81b7-f0ec5907cbc0",
+ CellID->1684656296],
+Cell[45950, 1194, 176, 2, 27, "Keywords",ExpressionUUID->"19e86adb-280d-463d-8533-ae1a7e7abc04",
+ CellID->1206907547]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

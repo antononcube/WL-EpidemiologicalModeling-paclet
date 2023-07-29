@@ -1,0 +1,82 @@
+(* ::Package:: *)
+
+PacletObject[
+  <|
+    "Name" -> "AntonAntonov/EpidemiologicalModeling",
+    "Description" -> "Functions for creation of epidemiological models",
+    "Creator" -> "Anton Antonov",
+    "License" -> "MIT",
+    "PublisherID" -> "AntonAntonov",
+    "Version" -> "1.0.0",
+    "WolframVersion" -> "12.3+",
+    "PrimaryContext" -> "AntonAntonov`EpidemiologicalModeling`",
+    "Extensions" -> {
+      {
+        "Kernel",
+        "Root" -> "Kernel",
+        "Context" -> {"AntonAntonov`EpidemiologicalModeling`"},
+        "Symbols" -> {
+          "AntonAntonov`EpidemiologicalModeling`AddModelIdentifier",
+          "AntonAntonov`EpidemiologicalModeling`AddTermsToEquations",
+          "AntonAntonov`EpidemiologicalModeling`AggregateForCellIDs",
+          "AntonAntonov`EpidemiologicalModeling`ApproximateField",
+          "AntonAntonov`EpidemiologicalModeling`AssignInitialConditions",
+          "AntonAntonov`EpidemiologicalModeling`AssignRateRules",
+          "AntonAntonov`EpidemiologicalModeling`CoerceAnnotatedSymbols",
+          "AntonAntonov`EpidemiologicalModeling`ConvertSolutions",
+          "AntonAntonov`EpidemiologicalModeling`EconomicsStockPlots",
+          "AntonAntonov`EpidemiologicalModeling`EpidemiologicalFullModelQ",
+          "AntonAntonov`EpidemiologicalModeling`EpidemiologicalModelQ",
+          "AntonAntonov`EpidemiologicalModeling`EpidemiologyFullModelQ",
+          "AntonAntonov`EpidemiologicalModeling`EpidemiologyModelQ",
+          "AntonAntonov`EpidemiologicalModeling`EquationPosition",
+          "AntonAntonov`EpidemiologicalModeling`EvaluateSolutionsByModelIDs",
+          "AntonAntonov`EpidemiologicalModeling`EvaluateSolutionsOverGraph",
+          "AntonAntonov`EpidemiologicalModeling`EvaluateSolutionsOverGraphVertexes",
+          "AntonAntonov`EpidemiologicalModeling`GetPopulations",
+          "AntonAntonov`EpidemiologicalModeling`GetPopulationSymbols",
+          "AntonAntonov`EpidemiologicalModeling`GetRates",
+          "AntonAntonov`EpidemiologicalModeling`GetRateSymbols",
+          "AntonAntonov`EpidemiologicalModeling`GetStocks",
+          "AntonAntonov`EpidemiologicalModeling`GetStockSymbols",
+          "AntonAntonov`EpidemiologicalModeling`GridObjectQ",
+          "AntonAntonov`EpidemiologicalModeling`JoinModels",
+          "AntonAntonov`EpidemiologicalModeling`MakeAgeGroupMixingTerms",
+          "AntonAntonov`EpidemiologicalModeling`MakeAgeGroupMortalityTerms",
+          "AntonAntonov`EpidemiologicalModeling`MakeCoreMultiSiteModel",
+          "AntonAntonov`EpidemiologicalModeling`MakeHexagonGrid",
+          "AntonAntonov`EpidemiologicalModeling`MakeMigrationTerms",
+          "AntonAntonov`EpidemiologicalModeling`MakePolygonGrid",
+          "AntonAntonov`EpidemiologicalModeling`MakeVertexShapeFunction",
+          "AntonAntonov`EpidemiologicalModeling`MalariaModel",
+          "AntonAntonov`EpidemiologicalModeling`ModelGridTableForm",
+          "AntonAntonov`EpidemiologicalModeling`ModelNDSolve",
+          "AntonAntonov`EpidemiologicalModeling`ModelNDSolveEquations",
+          "AntonAntonov`EpidemiologicalModeling`MultiSiteModelStocksPlot",
+          "AntonAntonov`EpidemiologicalModeling`PopulationStockPlots",
+          "AntonAntonov`EpidemiologicalModeling`PrefixGroupsSolutionsListPlot",
+          "AntonAntonov`EpidemiologicalModeling`SEI2HREconModel",
+          "AntonAntonov`EpidemiologicalModeling`SEI2HRModel",
+          "AntonAntonov`EpidemiologicalModeling`SEI2RModel",
+          "AntonAntonov`EpidemiologicalModeling`SEI4RModel",
+          "AntonAntonov`EpidemiologicalModeling`SEIRModel",
+          "AntonAntonov`EpidemiologicalModeling`SetInitialConditions",
+          "AntonAntonov`EpidemiologicalModeling`SetRateRules",
+          "AntonAntonov`EpidemiologicalModeling`SI2RModel",
+          "AntonAntonov`EpidemiologicalModeling`SIRModel",
+          "AntonAntonov`EpidemiologicalModeling`SiteIndexSolutionsPlot",
+          "AntonAntonov`EpidemiologicalModeling`ToAssociation",
+          "AntonAntonov`EpidemiologicalModeling`ToGraph",
+          "AntonAntonov`EpidemiologicalModeling`ToPrefixGroupsSolutions",
+          "AntonAntonov`EpidemiologicalModeling`ToSiteCompartmentsModel",
+          "AntonAntonov`EpidemiologicalModeling`ToTimeSeries"
+        }
+      },
+      {
+        "Documentation",
+        "Root" -> "Documentation",
+        "Language" -> "English"
+      }
+    }
+  |>
+]
