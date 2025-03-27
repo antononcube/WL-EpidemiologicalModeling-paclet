@@ -451,7 +451,11 @@ The third optional argument is expected to be list of ID's with length that corr
 ToSiteCompartmentsModel::"nmgrpop" = "The values of the option \"MigratingPopulations\" is expected to be
 a subset of `1` or one of Automatic, All, or None.";
 
-Options[ToSiteCompartmentsModel] = {"MigratingPopulations" -> Automatic, "MinGuard" -> True};
+Options[ToSiteCompartmentsModel] = {
+  "MigratingPopulations" -> Automatic,
+  "TotalPopulation" -> Automatic,
+  "PopulationPattern" -> Automatic,
+  "MinGuard" -> True};
 
 ToSiteCompartmentsModel[model_Association, matMigration_?MatrixQ, opts : OptionsPattern[] ] :=
     Block[{ids},
@@ -464,12 +468,17 @@ ToSiteCompartmentsModel[model_Association, matMigration_?MatrixQ, opts : Options
 (*    ];*)
 
 ToSiteCompartmentsModel[model_?EpidemiologyModelQ, matMigration_?MatrixQ, cellIDs_List, opts : OptionsPattern[] ] :=
-    Block[{allPops, migrPops, coreModel, eqs, newTerms},
+    Block[{allPops, migrPops, totalPop, popPat, coreModel, eqs, newTerms},
 
       migrPops = OptionValue[ToSiteCompartmentsModel, "MigratingPopulations"];
+      totalPop = OptionValue[ToSiteCompartmentsModel, "TotalPopulation"];
+      If[TrueQ[totalPop === Automatic], totalPop = "Total Population"];
 
-      allPops = Values @ Select[ model["Stocks"], StringMatchQ[#, __ ~~ "Population" ~~ EndOfString ]& ];
-      allPops = Complement[allPops, {"Total Population"} ];
+      popPat = OptionValue[ToSiteCompartmentsModel, "PopulationPattern"];
+      If[TrueQ[popPat === Automatic], popPat = __ ~~ "Population" ~~ EndOfString];
+
+      allPops = Values @ Select[ model["Stocks"], StringMatchQ[#, popPat ]& ];
+      allPops = Complement[allPops, {totalPop} ];
 
       Which[
         TrueQ[migrPops === None],
@@ -502,7 +511,7 @@ ToSiteCompartmentsModel[model_?EpidemiologyModelQ, matMigration_?MatrixQ, cellID
             newTerms =
                 MakeMigrationTerms[
                   matMigration,
-                  GetStocks[coreModel, "Total Population"],
+                  GetStocks[coreModel, totalPop],
                   GetStocks[coreModel, #2],
                   FilterRules[{opts}, Options[MakeMigrationTerms]]
                 ];
